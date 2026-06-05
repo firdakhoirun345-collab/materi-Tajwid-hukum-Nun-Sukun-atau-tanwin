@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petualangan Tajwid - Hukum Nun Sukun & Tanwin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f0fdf4; /* Light emerald green background */
+        }
+        .arabic {
+            font-family: 'Amiri', serif;
+            direction: rtl;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #059669;
+            border-radius: 10px;
+        }
+        /* Custom Keyframe Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden antialiased text-slate-800">
+
+    <!-- Header/Navigation Bar -->
+    <header class="bg-gradient-to-r from-emerald-800 to-teal-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="navigate('home')">
+                <div class="bg-amber-400 p-2 rounded-xl text-emerald-900 font-bold text-xl shadow-md">
+                    🕌
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight md:text-xl">Petualangan Tajwid</h1>
+                    <p class="text-xs text-emerald-200">Nun Sukun & Tanwin - Kelas 7 SMP</p>
+                </div>
+            </div>
+            <!-- Mobile Menu Burger Button -->
+            <button id="mobile-menu-btn" class="md:hidden block text-white focus:outline-none focus:ring-2 focus:ring-amber-400 rounded p-1" aria-label="Toggle Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex space-x-1 lg:space-x-2">
+                <button onclick="navigate('home')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition hover:bg-emerald-700/50 flex items-center gap-1">🏠 Beranda</button>
+                <button onclick="navigate('tujuan')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition hover:bg-emerald-700/50 flex items-center gap-1">🎯 Tujuan</button>
+                <button onclick="navigate('peta')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition hover:bg-emerald-700/50 flex items-center gap-1">🗺️ Peta Konsep</button>
+                <button onclick="navigate('materi')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition hover:bg-emerald-700/50 flex items-center gap-1">📖 Materi</button>
+                <button onclick="navigate('game')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition hover:bg-emerald-700/50 flex items-center gap-1">🎮 Game Kuis</button>
+                <button onclick="navigate('profil')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition hover:bg-emerald-700/50 flex items-center gap-1">👤 Profil</button>
+            </nav>
+        </div>
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-emerald-900 border-t border-emerald-800 transition-all duration-300">
+            <div class="px-3 py-2 space-y-1">
+                <button onclick="navigate('home')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-white block hover:bg-emerald-800">🏠 Beranda</button>
+                <button onclick="navigate('tujuan')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-white block hover:bg-emerald-800">🎯 Tujuan</button>
+                <button onclick="navigate('peta')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-white block hover:bg-emerald-800">🗺️ Peta Konsep</button>
+                <button onclick="navigate('materi')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-white block hover:bg-emerald-800">📖 Materi</button>
+                <button onclick="navigate('game')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-white block hover:bg-emerald-800">🎮 Game Kuis</button>
+                <button onclick="navigate('profil')" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-white block hover:bg-emerald-800">👤 Profil</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6">
+
+        <!-- ================= PAGE 1: BERANDA ================= -->
+        <section id="page-home" class="page-section space-y-8 py-4">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Hero Left Info -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-800 font-bold text-xs uppercase tracking-wider rounded-full">✨ Media Interaktif Asyik</span>
+                    <h1 class="text-3xl md:text-5xl font-black text-slate-800 leading-tight">
+                        Kuasai Tajwid dengan <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Mudah & Menyenangkan!</span>
+                    </h1>
+                    <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+                        Selamat datang di aplikasi pembelajaran interaktif hukum bacaan <strong class="text-emerald-700">Nun Sukun (نْ) dan Tanwin (ً ٍ ٌ)</strong>. Dibuat khusus untuk siswa Kelas 7 SMP agar kamu bisa membaca Al-Qur'an dengan tartil, benar, dan penuh rasa percaya diri!
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="navigate('materi')" class="px-8 py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white font-bold rounded-2xl shadow-lg hover:shadow-emerald-200 hover:-translate-y-0.5 transition duration-300">
+                            Mulai Belajar 📖
+                        </button>
+                        <button onclick="navigate('game')" class="px-8 py-3.5 bg-white border-2 border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-slate-700 font-bold rounded-2xl hover:-translate-y-0.5 transition duration-300">
+                            Coba Game Kuis 🎮
+                        </button>
+                    </div>
+                </div>
+                <!-- Hero Right Interactive Illustration -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-sm">
+                        <div class="absolute inset-0 bg-emerald-200 rounded-full filter blur-3xl opacity-40 animate-pulse"></div>
+                        <div class="relative bg-white p-6 rounded-3xl shadow-2xl border-2 border-emerald-50/50 animate-float">
+                            <!-- SVG Decorative Mosque Illustration -->
+                            <svg class="w-full h-auto text-emerald-600" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M100 20C110 40 135 45 135 60H65C65 45 90 40 100 20Z" fill="currentColor" opacity="0.9"/>
+                                <path d="M50 60C50 50 60 50 60 40V60H50Z" fill="#D97706"/>
+                                <path d="M150 60C150 50 140 50 140 40V60H150Z" fill="#D97706"/>
+                                <rect x="55" y="60" width="90" height="60" rx="4" fill="currentColor" opacity="0.85"/>
+                                <rect x="85" y="80" width="30" height="40" rx="15" fill="#FEF3C7"/>
+                                <circle cx="100" cy="45" r="5" fill="#FBBF24"/>
+                            </svg>
+                            <div class="mt-4 text-center">
+                                <span class="text-3xl font-bold arabic text-emerald-800">نْ  -  ً  ٍ  ٌ</span>
+                                <p class="text-xs text-slate-500 mt-2">"Sebaik-baik kalian adalah yang mempelajari Al-Qur'an dan mengajarkannya." (HR. Bukhari)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Features Shortcut Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition cursor-pointer" onclick="navigate('peta')">
+                    <div class="text-3xl mb-3">🗺️</div>
+                    <h3 class="font-bold text-lg text-slate-800">Peta Konsep Visual</h3>
+                    <p class="text-sm text-slate-600 mt-1">Struktur pembagian hukum bacaan yang disusun sistematis agar mudah dihafal otak.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition cursor-pointer" onclick="navigate('materi')">
+                    <div class="text-3xl mb-3">📖</div>
+                    <h3 class="font-bold text-lg text-slate-800">Materi Terperinci</h3>
+                    <p class="text-sm text-slate-600 mt-1">Dilengkapi contoh-contoh ayat Al-Qur'an lengkap dengan tulisan latin dan tips membacanya.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition cursor-pointer" onclick="navigate('game')">
+                    <div class="text-3xl mb-3">🎯</div>
+                    <h3 class="font-bold text-lg text-slate-800">Game & Evaluasi</h3>
+                    <p class="text-sm text-slate-600 mt-1">Kuis tebak kasus dan permainan drag-drop untuk menguji kecakapan tajwidmu!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 2: TUJUAN ================= -->
+        <section id="page-tujuan" class="page-section hidden max-w-4xl mx-auto space-y-6">
+            <div class="text-center">
+                <span class="px-3 py-1 bg-amber-100 text-amber-800 font-bold text-xs uppercase tracking-wider rounded-full">Sasaran & Pencapaian</span>
+                <h2 class="text-3xl font-black text-slate-800 mt-2">Kompetensi & Tujuan Pembelajaran</h2>
+            </div>
+            
+            <div class="bg-white p-6 md:p-8 rounded-3xl shadow-lg space-y-6 border border-slate-100">
+                <div class="p-5 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl border-l-4 border-emerald-600">
+                    <h3 class="font-bold text-emerald-900 flex items-center gap-2 text-lg">
+                        <span>📌</span> Kompetensi Dasar (KD)
+                    </h3>
+                    <p class="text-slate-700 text-sm md:text-base mt-2 leading-relaxed">
+                        Memahami ketentuan dan menerapkan hukum bacaan Nun Sukun (نْ) atau Tanwin (ً ٍ ٌ) dalam membaca ayat-ayat Al-Qur'an secara tartil, fasih, dan sesuai dengan kaidah ilmu tajwid.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2">
+                        <span>🚀</span> Indikator Capaian (Tujuan)
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-xl flex gap-3">
+                            <span class="text-emerald-600 text-xl font-bold">1</span>
+                            <p class="text-sm text-slate-700">Mampu menyebutkan pengertian dan jenis-jenis hukum bacaan Nun Sukun dan Tanwin dengan lancar.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl flex gap-3">
+                            <span class="text-emerald-600 text-xl font-bold">2</span>
+                            <p class="text-sm text-slate-700">Mampu mengelompokkan huruf-huruf hijaiyah yang masuk ke dalam masing-masing klasifikasi hukum tajwid.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl flex gap-3">
+                            <span class="text-emerald-600 text-xl font-bold">3</span>
+                            <p class="text-sm text-slate-700">Mampu menganalisis dan mendeteksi hukum bacaan pada potongan ayat Al-Qur'an secara mandiri.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl flex gap-3">
+                            <span class="text-emerald-600 text-xl font-bold">4</span>
+                            <p class="text-sm text-slate-700">Mampu melafalkan bacaan Izhar, Idgham, Iqlab, dan Ikhfa dengan cara mendengung (ghunnah) yang tepat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: PETA KONSEP ================= -->
+        <section id="page-peta" class="page-section hidden max-w-5xl mx-auto space-y-6">
+            <div class="text-center">
+                <span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold text-xs uppercase tracking-wider rounded-full">Bagan Interaktif</span>
+                <h2 class="text-3xl font-black text-slate-800 mt-2">Peta Konsep Hukum Nun Sukun / Tanwin</h2>
+                <p class="text-slate-500 text-sm mt-1">Klik pada setiap kotak hukum bacaan untuk melihat rangkuman huruf dan sifatnya!</p>
+            </div>
+
+            <!-- Interative SVG & Button Mind Map -->
+            <div class="bg-white p-6 md:p-10 rounded-3xl shadow-lg border border-slate-100 space-y-8">
+                <!-- Root Block -->
+                <div class="flex justify-center">
+                    <div class="bg-emerald-800 text-white px-8 py-4 rounded-2xl text-center shadow-md border-2 border-emerald-600 max-w-sm">
+                        <span class="text-xs uppercase font-bold tracking-widest text-emerald-300">Pangkal Pembagian</span>
+                        <h3 class="font-extrabold text-lg md:text-xl">Nun Sukun (نْ) / Tanwin (ً ٍ ٌ)</h3>
+                    </div>
+                </div>
+
+                <!-- Grid Connecting Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Leaf 1: Izhar -->
+                    <button onclick="selectPetaConcept('izhar')" id="peta-izhar" class="peta-node bg-slate-50 hover:bg-emerald-50 border-2 border-slate-100 hover:border-emerald-500 text-left p-5 rounded-2xl transition duration-300 group">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-emerald-600 uppercase">1. Jelas</span>
+                            <span class="text-sm opacity-50 group-hover:opacity-100 transition">👉</span>
+                        </div>
+                        <h4 class="font-black text-lg text-slate-800 mt-2">Izhar Halqi</h4>
+                        <p class="text-xs text-slate-500 mt-1">Dibaca jelas, tegas, tanpa mendengung di tenggorokan.</p>
+                        <div class="mt-3 flex gap-1 flex-wrap">
+                            <span class="bg-emerald-100 text-emerald-800 font-bold text-xs px-2 py-0.5 rounded">6 Huruf</span>
+                        </div>
+                    </button>
+
+                    <!-- Leaf 2: Idgham -->
+                    <button onclick="selectPetaConcept('idgham')" id="peta-idgham" class="peta-node bg-slate-50 hover:bg-emerald-50 border-2 border-slate-100 hover:border-emerald-500 text-left p-5 rounded-2xl transition duration-300 group">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-emerald-600 uppercase">2. Melebur</span>
+                            <span class="text-sm opacity-50 group-hover:opacity-100 transition">👉</span>
+                        </div>
+                        <h4 class="font-black text-lg text-slate-800 mt-2">Idgham</h4>
+                        <p class="text-xs text-slate-500 mt-1">Dibagi menjadi Bighunnah (dengung) & Bilaghunnah (tanpa dengung).</p>
+                        <div class="mt-3 flex gap-1 flex-wrap">
+                            <span class="bg-emerald-100 text-emerald-800 font-bold text-xs px-2 py-0.5 rounded">4 + 2 Huruf</span>
+                        </div>
+                    </button>
+
+                    <!-- Leaf 3: Iqlab -->
+                    <button onclick="selectPetaConcept('iqlab')" id="peta-iqlab" class="peta-node bg-slate-50 hover:bg-emerald-50 border-2 border-slate-100 hover:border-emerald-500 text-left p-5 rounded-2xl transition duration-300 group">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-emerald-600 uppercase">3. Menukar</span>
+                            <span class="text-sm opacity-50 group-hover:opacity-100 transition">👉</span>
+                        </div>
+                        <h4 class="font-black text-lg text-slate-800 mt-2">Iqlab</h4>
+                        <p class="text-xs text-slate-500 mt-1">Mengubah suara 'N' menjadi 'M' ketika bertemu huruf Ba.</p>
+                        <div class="mt-3 flex gap-1 flex-wrap">
+                            <span class="bg-emerald-100 text-emerald-800 font-bold text-xs px-2 py-0.5 rounded">1 Huruf</span>
+                        </div>
+                    </button>
+
+                    <!-- Leaf 4: Ikhfa -->
+                    <button onclick="selectPetaConcept('ikhfa')" id="peta-ikhfa" class="peta-node bg-slate-50 hover:bg-emerald-50 border-2 border-slate-100 hover:border-emerald-500 text-left p-5 rounded-2xl transition duration-300 group">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-emerald-600 uppercase">4. Samar</span>
+                            <span class="text-sm opacity-50 group-hover:opacity-100 transition">👉</span>
+                        </div>
+                        <h4 class="font-black text-lg text-slate-800 mt-2">Ikhfa Haqiqi</h4>
+                        <p class="text-xs text-slate-500 mt-1">Menyamarkan suara 'N' antara izhar dan idgham, mendengung.</p>
+                        <div class="mt-3 flex gap-1 flex-wrap">
+                            <span class="bg-emerald-100 text-emerald-800 font-bold text-xs px-2 py-0.5 rounded">15 Huruf</span>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Dynamic Info Card Area based on Selection -->
+                <div id="peta-info-card" class="bg-slate-50 border border-slate-200 p-6 rounded-2xl text-center">
+                    <p class="text-slate-600">Klik salah satu hukum tajwid di atas untuk membedah pengertian, huruf, dan karakteristik membacanya!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 4: MATERI BELAJAR ================= -->
+        <section id="page-materi" class="page-section hidden space-y-6">
+            <div class="text-center">
+                <span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold text-xs uppercase tracking-wider rounded-full">Menu Pembelajaran Utama</span>
+                <h2 class="text-3xl font-black text-slate-800 mt-2 font-sans">Eksplorasi Materi Tajwid</h2>
+                <p class="text-slate-500 text-sm mt-1">Pilihlah salah satu sub-materi di bawah untuk menjelajahi detail materi lengkap dengan ayat Al-Qur'an.</p>
+            </div>
+
+            <!-- Tab Buttons Container -->
+            <div class="flex flex-wrap gap-2 justify-center bg-emerald-900/10 p-2 rounded-2xl max-w-3xl mx-auto">
+                <button onclick="setActiveMateriTab('tab-izhar')" id="tab-btn-izhar" class="materi-tab-btn px-4 py-2.5 rounded-xl text-sm font-bold transition">1. Izhar Halqi</button>
+                <button onclick="setActiveMateriTab('tab-idgham-bi')" id="tab-btn-idgham-bi" class="materi-tab-btn px-4 py-2.5 rounded-xl text-sm font-bold transition">2. Idgham Bighunnah</button>
+                <button onclick="setActiveMateriTab('tab-idgham-bila')" id="tab-btn-idgham-bila" class="materi-tab-btn px-4 py-2.5 rounded-xl text-sm font-bold transition">3. Idgham Bilaghunnah</button>
+                <button onclick="setActiveMateriTab('tab-iqlab')" id="tab-btn-iqlab" class="materi-tab-btn px-4 py-2.5 rounded-xl text-sm font-bold transition">4. Iqlab</button>
+                <button onclick="setActiveMateriTab('tab-ikhfa')" id="tab-btn-ikhfa" class="materi-tab-btn px-4 py-2.5 rounded-xl text-sm font-bold transition">5. Ikhfa Haqiqi</button>
+            </div>
+
+            <!-- TAB CONTENT AREA -->
+            <div id="materi-content-box" class="bg-white p-6 md:p-8 rounded-3xl shadow-lg border border-slate-100 max-w-5xl mx-auto">
+                
+                <!-- CONTENT 1: IZHAR HALQI -->
+                <div id="tab-izhar" class="materi-tab-content space-y-6 hidden">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-4 gap-4">
+                        <div>
+                            <span class="text-emerald-600 font-extrabold text-sm uppercase">Hukum Bacaan #1</span>
+                            <h3 class="text-2xl font-black text-slate-800">Izhar Halqi (إِظْهَار حَلْقِي)</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs bg-slate-100 px-3 py-1.5 rounded-lg text-slate-600">Sifat: <strong>Jelas tanpa dengung</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <!-- Left Explanation Column -->
+                        <div class="lg:col-span-7 space-y-4">
+                            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                                <strong class="text-slate-800">Izhar</strong> secara bahasa artinya <span class="text-emerald-700 font-bold">jelas atau menerangkan</span>. <strong class="text-slate-800">Halqi</strong> berarti tenggorokan. 
+                            </p>
+                            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                                Hukum ini berlaku apabila <span class="bg-emerald-50 px-2 py-0.5 text-emerald-800 rounded font-semibold">Nun sukun (نْ) atau Tanwin (ً ٍ ٌ)</span> bertemu dengan salah satu dari 6 huruf halq (tenggorokan). Cara membacanya adalah suara Nun atau Tanwin tersebut dilafalkan secara **terang, jelas, dan tegas** tanpa dengung (saktah).
+                            </p>
+                            
+                            <!-- Huruf Box -->
+                            <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl">
+                                <h4 class="font-bold text-amber-900 text-sm">6 Huruf Izhar Halqi:</h4>
+                                <div class="flex gap-3 mt-3 justify-center text-2xl font-bold arabic text-emerald-900">
+                                    <span>أ</span><span>هـ</span><span>ع</span><span>ح</span><span>غ</span><span>خ</span>
+                                </div>
+                                <p class="text-center text-xs text-amber-700 mt-2">(Alif, Ha, 'Ain, Ha', Ghain, Kha)</p>
+                            </div>
+                        </div>
+
+                        <!-- Right Examples Column -->
+                        <div class="lg:col-span-5 space-y-3">
+                            <h4 class="font-bold text-slate-800 text-sm">Contoh Penerapan Ayat:</h4>
+                            
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Nun Sukun + Alif (أ)</span>
+                                    <button onclick="playAcousticGuide('staccato')" class="text-xs text-emerald-700 hover:text-emerald-900 flex items-center gap-1 font-bold">🔊 Simulasikan</button>
+                                </div>
+                                <div class="text-right py-2">
+                                    <span class="text-2xl font-bold arabic leading-loose">مَنْ اٰمَنَ</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Latin: <em class="text-slate-700 font-medium">Man 'aamana</em> (Dibaca jelas tanpa ditahan mendengung)</p>
+                            </div>
+
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Dhammatain + Alif (أ)</span>
+                                    <button onclick="playAcousticGuide('staccato')" class="text-xs text-emerald-700 hover:text-emerald-900 flex items-center gap-1 font-bold">🔊 Simulasikan</button>
+                                </div>
+                                <div class="text-right py-2">
+                                    <span class="text-2xl font-bold arabic leading-loose">عَذَابٌ اَلِيْمٌ</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Latin: <em class="text-slate-700 font-medium">'Adzaabun 'aliim</em> (Nun mati dalam tanwin tidak mendengung)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENT 2: IDGHAM BIGHUNNAH -->
+                <div id="tab-idgham-bi" class="materi-tab-content space-y-6 hidden">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-4 gap-4">
+                        <div>
+                            <span class="text-emerald-600 font-extrabold text-sm uppercase">Hukum Bacaan #2</span>
+                            <h3 class="text-2xl font-black text-slate-800">Idgham Bighunnah (إِدْغَام بِغُنَّة)</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs bg-amber-100 px-3 py-1.5 rounded-lg text-amber-800">Sifat: <strong>Melebur disertai dengung</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <div class="lg:col-span-7 space-y-4">
+                            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                                <strong class="text-slate-800">Idgham</strong> artinya <span class="text-emerald-700 font-bold">meleburkan atau memasukkan</span> satu huruf ke huruf berikutnya. <strong class="text-slate-800">Bighunnah</strong> artinya <span class="text-emerald-700 font-bold">dengan dengung (nasalisasi)</span>.
+                            </p>
+                            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                                Apabila Nun sukun atau Tanwin bertemu salah satu dari 4 huruf Idgham Bighunnah, maka suara Nun sukun dileburkan masuk ke dalam suara huruf di depannya dengan **menahannya mendengung di hidung selama 2-3 ketukan**.
+                            </p>
+                            
+                            <!-- Huruf Box -->
+                            <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl">
+                                <h4 class="font-bold text-amber-900 text-sm">4 Huruf Idgham Bighunnah (Disukai dengan jembatan keledai: YA-N-MU):</h4>
+                                <div class="flex gap-4 mt-3 justify-center text-2xl font-bold arabic text-emerald-900">
+                                    <span>ي</span><span>ن</span><span>م</span><span>و</span>
+                                </div>
+                                <p class="text-center text-xs text-amber-700 mt-2">(Ya, Nun, Mim, Wawu)</p>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5 space-y-3">
+                            <h4 class="font-bold text-slate-800 text-sm">Contoh Penerapan Ayat:</h4>
+                            
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Nun Sukun + Ya (ي)</span>
+                                    <button onclick="playAcousticGuide('long')" class="text-xs text-emerald-700 hover:text-emerald-900 flex items-center gap-1 font-bold">🔊 Dengar Dengung</button>
+                                </div>
+                                <div class="text-right py-2">
+                                    <span class="text-2xl font-bold arabic leading-loose">مَنْ يَّقُوْلُ</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Latin: <em class="text-slate-700 font-medium">May-yaquulu</em> (Dileburkan dan ditahan dengung di pangkal hidung)</p>
+                            </div>
+
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Kasratain + Mim (م)</span>
+                                    <button onclick="playAcousticGuide('long')" class="text-xs text-emerald-700 hover:text-emerald-900 flex items-center gap-1 font-bold">🔊 Dengar Dengung</button>
+                                </div>
+                                <div class="text-right py-2">
+                                    <span class="text-2xl font-bold arabic leading-loose">فِيْ عَمَدٍ مُّمَدَّدَةٍ</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Latin: <em class="text-slate-700 font-medium">Fii 'amadim-mumaddadah</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENT 3: IDGHAM BILAGHUNNAH -->
+                <div id="tab-idgham-bila" class="materi-tab-content space-y-6 hidden">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-4 gap-4">
+                        <div>
+                            <span class="text-emerald-600 font-extrabold text-sm uppercase">Hukum Bacaan #3</span>
+                            <h3 class="text-2xl font-black text-slate-800">Idgham Bilaghunnah (إِدْغَام بِلا غُنَّة)</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs bg-red-100 px-3 py-1.5 rounded-lg text-red-800">Sifat: <strong>Melebur tanpa dengung</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <div class="lg:col-span-7 space-y-4">
+                            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                                <strong class="text-slate-800">Idgham</strong> adalah memasukkan, sedangkan <strong class="text-slate-800">Bilaghunnah</strong> artinya <span class="text-red-700 font-bold">tanpa mendengung</span>.
+                            </p>
+                            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                                Hukum ini terjadi jika Nun sukun atau Tanwin bertemu dengan huruf **Lam (ل) atau Ra (ر)**. Cara bacanya adalah suara Nun sukun atau Tanwin itu dileburkan sepenuhnya ke huruf Lam atau Ra tersebut dengan tegas, **tanpa menahan dengung sedikit pun**.
+                            </p>
+                            
+                            <!-- Huruf Box -->
+                            <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl">
+                                <h4 class="font-bold text-amber-900 text-sm">2 Huruf Idgham Bilaghunnah:</h4>
+                                <div class="flex gap-6 mt-3 justify-center text-2xl font-bold arabic text-emerald-900">
+                                    <span>ل</span><span>ر</span>
+                                </div>
+                                <p class="text-center text-xs text-amber-700 mt-2">(Lam dan Ra)</p>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5 space-y-3">
+                            <h4 class="font-bold text-slate-800 text-sm">Contoh Penerapan Ayat:</h4>
+                            
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Nun Sukun + Lam (ل)</span>
+                                    <button onclick="playAcousticGuide('staccato')" class="text-xs text-emerald-700 hover:text-emerald-900 flex items-center gap-1 font-bold">🔊 Simulasikan</button>
+                                </div>
+                                <div class="text-right py-2">
+                                    <span class="text-2xl font-bold arabic leading-loose">مِنْ لَّدُنْهُ</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Latin: <em class="text-slate-700 font-medium">Mil-ladunhu</em> (Langsung masuk ke huruf Lam ber-tasydid)</p>
+                            </div>
+
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Fathahtain + Ra (ر)</span>
+                                    <button onclick="playAcousticGuide('staccato')" class="text-xs text-emerald-700 hover:text-emerald-900 flex items-center gap-1 font-bold">🔊 Simulasikan</button>
+                                </div>
+                                <div class="text-right py-2">
+                                    <span class="text-2xl font-bold arabic leading-loose">غَفُوْرًا رَّحِيْمًا</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Latin: <em class="text-slate-700 font-medium">Ghafuurar-rahiimaa</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENT 4: IQLAB -->
+                <div id="tab-iqlab" class="materi-tab-content space-y-6 hidden">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-4 gap-4">
+                        <div>
+                            <span class="text-emerald-600 font-extrabold text-sm uppercase">Hukum Bacaan #4</span>
+                            <h3 class="text-2xl font-black text-slate-800">Iqlab (إِقْلَاب)</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs bg-purple-100 px-3 py-1.5 rounded-lg text-purple-800">Sifat: <strong>Menukar menjadi Mim (م)</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <div class="lg:col-span-7 space-y-4">
+                            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                                <strong class="text-slate-800">Iqlab</strong> secara bahasa berarti <span class="text-emerald-700 font-bold">memindahkan atau mengubah</span> suatu bentuk ke bentuk yang lain.
+                            </p>
+                            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                                Hukum ini terjadi apabila Nun sukun atau Tanwin bertemu dengan huruf **Ba (ب)** saja. Cara membacanya adalah suara Nun sukun atau Tanwin diganti dengan **suara Mim (م) mati** disertai dengan dengung lembut di bibir yang tidak terlalu rapat. Biasanya di dalam mushaf diberi simbol huruf mim kecil (<span class="arabic text-emerald-700 text-lg font-bold">م</span>) di atas ayat.
+                            </p>
+                            
+                            <!-- Huruf Box -->
+                            <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl">
+                                <h4 class="font-bold text-amber-900 text-sm">Hanya 1 Huruf Iqlab:</h4>
+                                <div class="flex gap-6 mt-3 justify-center text-2xl font-bold arabic text-emerald-900">
+                                    <span>ب</span>
+                                </div>
+                                <p class="text-center text-xs text-amber-700 mt-2">(Ba)</p>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5 space-y-3">
+                            <h4 class="font-bold text-slate-800 text-sm">Contoh Penerapan Ayat:</h4>
+                            
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Nun Sukun + Ba (ب)</span>
+                                    <button onclick="playAcousticGuide('ramp')" class="text-xs text-emerald-700 hover:text-emerald-900 flex items-center gap-1 font-bold">🔊 Dengar Transisi</button>
+                                </div>
+                                <div class="text-right py-2">
+                                    <span class="text-2xl font-bold arabic leading-loose">مِنْ بَعْدِ</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Latin: <em class="text-slate-700 font-medium">Mim-ba'di</em> (Suara Nun sepenuhnya bertukar menjadi Mim dibumbui dengung samar)</p>
+                            </div>
+
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Fathahtain + Ba (ب)</span>
+                                    <button onclick="playAcousticGuide('ramp')" class="text-xs text-emerald-700 hover:text-emerald-900 flex items-center gap-1 font-bold">🔊 Dengar Transisi</button>
+                                </div>
+                                <div class="text-right py-2">
+                                    <span class="text-2xl font-bold arabic leading-loose">سَمِيْعٌۢ بَصِيْرٌ</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Latin: <em class="text-slate-700 font-medium">Samii'um-basiir</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENT 5: IKHFA HAQIQI -->
+                <div id="tab-ikhfa" class="materi-tab-content space-y-6 hidden">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center border-b pb-4 gap-4">
+                        <div>
+                            <span class="text-emerald-600 font-extrabold text-sm uppercase">Hukum Bacaan #5</span>
+                            <h3 class="text-2xl font-black text-slate-800">Ikhfa Haqiqi (إِخْفَاء حَقِيقِي)</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs bg-indigo-100 px-3 py-1.5 rounded-lg text-indigo-800">Sifat: <strong>Menyamarkan Suara</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <div class="lg:col-span-7 space-y-4">
+                            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                                <strong class="text-slate-800">Ikhfa</strong> artinya <span class="text-emerald-700 font-bold">menyamarkan atau menyembunyikan</span>. <strong class="text-slate-800">Haqiqi</strong> artinya yang sebenarnya.
+                            </p>
+                            <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                                Hukum ini terjadi apabila Nun sukun atau Tanwin bertemu dengan salah satu dari **15 huruf sisa** selain huruf-huruf di atas. Cara membacanya adalah menyamarkan suara Nun/Tanwin menuju makhraj huruf berikutnya sehingga terdengar samar-samar (antara jelas dan melebur), serta diiringi dengan **dengungan (ghunnah) selama 2 ketukan**.
+                            </p>
+                            
+                            <!-- Huruf Box -->
+                            <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl">
+                                <h4 class="font-bold text-amber-900 text-xs">15 Huruf Ikhfa Haqiqi:</h4>
+                                <div class="grid grid-cols-5 gap-2 mt-2 text-center text-xl font-bold arabic text-emerald-900">
+                                    <span>ت</span><span>ث</span><span>ج</span><span>د</span><span>ذ</span>
+                                    <span>ز</span><span>س</span><span>ش</span><span>ص</span><span>ض</span>
+                                    <span>ط</span><span>ظ</span><span>ف</span><span>ق</span><span>ك</span>
+                                </div>
+                                <p class="text-center text-xs text-amber-700 mt-2">(Ta, Tsa, Jim, Dal, Dzal, Zai, Sin, Syin, Sad, Dad, Ta, Za, Fa, Qaf, Kaf)</p>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5 space-y-3">
+                            <h4 class="font-bold text-slate-800 text-sm">Contoh Penerapan Ayat:</h4>
+                            
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Nun Sukun + Dal (د)</span>
+                                    <button onclick="playAcousticGuide('long')" class="text-xs text-emerald-700 hover:text-emerald-900 flex items-center gap-1 font-bold">🔊 Dengar Dengung</button>
+                                </div>
+                                <div class="text-right py-2">
+                                    <span class="text-2xl font-bold arabic leading-loose">مِنْ دُوْنِ</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Latin: <em class="text-slate-700 font-medium">Min-duuni</em> (Disamarkan menjadi 'ng' menggantung tipis)</p>
+                            </div>
+
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Fathahtain + Tsa (ث)</span>
+                                    <button onclick="playAcousticGuide('long')" class="text-xs text-emerald-700 hover:text-emerald-900 flex items-center gap-1 font-bold">🔊 Dengar Dengung</button>
+                                </div>
+                                <div class="text-right py-2">
+                                    <span class="text-2xl font-bold arabic leading-loose">مَاءً ثَجَّاجًا</span>
+                                </div>
+                                <p class="text-xs text-slate-500">Latin: <em class="text-slate-700 font-medium">Maa'an-tsajjaajaa</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= PAGE 5: GAME & KUIS INTERAKTIF ================= -->
+        <section id="page-game" class="page-section hidden max-w-5xl mx-auto space-y-8">
+            <div class="text-center">
+                <span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold text-xs uppercase tracking-wider rounded-full">Zona Bermain & Mengasah Otak</span>
+                <h2 class="text-3xl font-black text-slate-800 mt-2">Uji Kemampuan Tajwid Kamu</h2>
+                <p class="text-slate-500 text-sm mt-1">Kami menyediakan dua tantangan seru. Ayo selesaikan dengan nilai terbaik!</p>
+            </div>
+
+            <!-- Game Selector Cards -->
+            <div id="game-selectors" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Selector 1: Detektif Tajwid -->
+                <div class="bg-white p-6 rounded-3xl shadow-md border-2 border-slate-100 hover:border-emerald-500 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="text-4xl mb-3">🔍</div>
+                        <h3 class="font-bold text-xl text-slate-800">Detektif Al-Qur'an (Kuis Cerdas Cermat)</h3>
+                        <p class="text-sm text-slate-600 mt-2">Jawab 5 pertanyaan pilihan ganda bergradasi tentang hukum Nun Sukun dan Tanwin. Temukan alasan dan hukum bacaan dari ayat-ayat pilihan!</p>
+                    </div>
+                    <button onclick="startQuiz()" class="w-full mt-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">Mulai Petualangan Kuis 🚀</button>
+                </div>
+
+                <!-- Selector 2: Pilah & Kelompokkan -->
+                <div class="bg-white p-6 rounded-3xl shadow-md border-2 border-slate-100 hover:border-amber-500 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="text-4xl mb-3">🧺</div>
+                        <h3 class="font-bold text-xl text-slate-800">Keranjang Klasifikasi Tajwid</h3>
+                        <p class="text-sm text-slate-600 mt-2">Tantangan melatih logika memilah! Klik kartu ayat tajwid lalu klik keranjang hukum tajwid yang tepat untuk memasukkannya ke dalam kategori yang sesuai.</p>
+                    </div>
+                    <button onclick="startSortingGame()" class="w-full mt-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-md transition">Mulai Game Pengelompokan 🎮</button>
+                </div>
+            </div>
+
+            <!-- CHALLENGE BLOCK A: DETEKTIF TAJWID (QUIZ) -->
+            <div id="quiz-block" class="hidden bg-white p-6 md:p-8 rounded-3xl shadow-xl border border-slate-100 max-w-3xl mx-auto space-y-6">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-emerald-600 uppercase tracking-widest">Kuis Detektif Tajwid</span>
+                        <h3 class="font-black text-lg text-slate-800 mt-0.5">Pertanyaan <span id="quiz-num">1</span> dari 5</h3>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-slate-500 block">Skor Saat Ini</span>
+                        <span id="quiz-score-indicator" class="font-bold text-emerald-600 text-lg">0</span>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-100 rounded-full h-2">
+                    <div id="quiz-progress" class="bg-gradient-to-r from-emerald-500 to-teal-500 h-2 rounded-full transition-all duration-300" style="width: 20%;"></div>
+                </div>
+
+                <!-- Question Area -->
+                <div class="space-y-4">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center space-y-3">
+                        <p id="quiz-question-text" class="text-slate-700 font-semibold text-base">Bagaimana bunyi ayat berikut ini dan apa hukumnya?</p>
+                        <!-- Arabic subtext if present -->
+                        <div id="quiz-question-arabic" class="text-3xl font-bold arabic text-slate-800 py-3 leading-relaxed"></div>
+                    </div>
+
+                    <!-- Answers Grid -->
+                    <div class="grid grid-cols-1 gap-3" id="quiz-options-container">
+                        <!-- Dynamic generated buttons -->
+                    </div>
+                </div>
+
+                <!-- Footer Navigation inside Quiz -->
+                <div class="flex justify-between items-center pt-2">
+                    <button onclick="quitQuiz()" class="text-xs font-bold text-red-500 hover:text-red-700">❌ Keluar Kuis</button>
+                    <div id="quiz-feedback-box" class="text-sm font-semibold text-center hidden"></div>
+                </div>
+            </div>
+
+            <!-- CHALLENGE BLOCK B: SORTING GAME -->
+            <div id="sort-block" class="hidden bg-slate-50 p-6 md:p-8 rounded-3xl shadow-xl border border-slate-200 max-w-4xl mx-auto space-y-6">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Game Klasifikasi</span>
+                        <h3 class="font-black text-xl text-slate-800">Keranjang Pengelompokan</h3>
+                    </div>
+                    <button onclick="quitSortingGame()" class="text-xs font-bold text-red-500 hover:text-red-700">❌ Keluar Game</button>
+                </div>
+
+                <p class="text-sm text-slate-600 text-center">Langkah: <strong class="text-slate-800">1. Klik sebuah kartu ayat</strong> di bawah, lalu <strong class="text-slate-800">2. Klik salah satu wadah keranjang</strong> di bagian bawah untuk menyortirnya!</p>
+
+                <!-- Cards Deck -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold uppercase text-slate-400">Pilihan Kartu Ayat:</h4>
+                    <div id="sort-deck" class="flex flex-wrap gap-3 justify-center py-4">
+                        <!-- Dynamic cards representing examples -->
+                    </div>
+                </div>
+
+                <!-- Baskets Area -->
+                <div class="space-y-4">
+                    <h4 class="text-xs font-bold uppercase text-slate-400 text-center">Daftar Keranjang Hukum Tajwid:</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                        <!-- Basket 1: Izhar -->
+                        <button onclick="selectBasket('izhar')" class="basket-btn bg-white hover:bg-emerald-50 border-2 border-slate-200 hover:border-emerald-500 p-4 rounded-2xl transition duration-200 text-center flex flex-col justify-between items-center h-28">
+                            <span class="text-2xl">🧺</span>
+                            <span class="font-extrabold text-sm text-emerald-800">Izhar Halqi</span>
+                            <span id="count-izhar" class="text-xs text-slate-400">(0 terisi)</span>
+                        </button>
+                        <!-- Basket 2: Idgham Bighunnah -->
+                        <button onclick="selectBasket('bighunnah')" class="basket-btn bg-white hover:bg-amber-50 border-2 border-slate-200 hover:border-amber-500 p-4 rounded-2xl transition duration-200 text-center flex flex-col justify-between items-center h-28">
+                            <span class="text-2xl">🧺</span>
+                            <span class="font-extrabold text-xs text-amber-800">Idgham Bighunnah</span>
+                            <span id="count-bighunnah" class="text-xs text-slate-400">(0 terisi)</span>
+                        </button>
+                        <!-- Basket 3: Idgham Bilaghunnah -->
+                        <button onclick="selectBasket('bilaghunnah')" class="basket-btn bg-white hover:bg-red-50 border-2 border-slate-200 hover:border-red-500 p-4 rounded-2xl transition duration-200 text-center flex flex-col justify-between items-center h-28">
+                            <span class="text-2xl">🧺</span>
+                            <span class="font-extrabold text-xs text-red-800">Idgham Bilaghunnah</span>
+                            <span id="count-bilaghunnah" class="text-xs text-slate-400">(0 terisi)</span>
+                        </button>
+                        <!-- Basket 4: Iqlab -->
+                        <button onclick="selectBasket('iqlab')" class="basket-btn bg-white hover:bg-purple-50 border-2 border-slate-200 hover:border-purple-500 p-4 rounded-2xl transition duration-200 text-center flex flex-col justify-between items-center h-28">
+                            <span class="text-2xl">🧺</span>
+                            <span class="font-extrabold text-sm text-purple-800">Iqlab</span>
+                            <span id="count-iqlab" class="text-xs text-slate-400">(0 terisi)</span>
+                        </button>
+                        <!-- Basket 5: Ikhfa -->
+                        <button onclick="selectBasket('ikhfa')" class="basket-btn bg-white hover:bg-indigo-50 border-2 border-slate-200 hover:border-indigo-500 p-4 rounded-2xl transition duration-200 text-center flex flex-col justify-between items-center h-28">
+                            <span class="text-2xl">🧺</span>
+                            <span class="font-extrabold text-sm text-indigo-800">Ikhfa Haqiqi</span>
+                            <span id="count-ikhfa" class="text-xs text-slate-400">(0 terisi)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Popup Notification Toast -->
+                <div id="game-feedback-toast" class="hidden p-4 rounded-xl text-center text-sm font-bold transition-all duration-300">
+                    Sempurna! Kamu meletakkan kartu di tempat yang tepat!
+                </div>
+            </div>
+
+            <!-- RESULT BANNER MODAL (FOR BOTH GAMES) -->
+            <div id="game-result-modal" class="hidden bg-white p-8 rounded-3xl shadow-2xl border-2 border-emerald-500 max-w-md mx-auto text-center space-y-6">
+                <div class="text-6xl animate-bounce">🏆</div>
+                <h3 class="font-black text-2xl text-slate-800" id="result-title">Selamat! Kamu Lulus</h3>
+                <p class="text-slate-600 text-sm" id="result-message">Kamu berhasil menyelesaikan permainan dengan pencapaian yang luar biasa.</p>
+                <div class="bg-emerald-50 py-4 rounded-2xl">
+                    <span class="text-xs text-emerald-800 uppercase font-bold tracking-widest block">Skor Akhir</span>
+                    <span class="text-4xl font-extrabold text-emerald-700" id="result-score-val">100 / 100</span>
+                </div>
+                <button onclick="resetToGamesSelection()" class="w-full py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold rounded-xl shadow-md transition">Kembali ke Menu Game</button>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 6: PROFIL PENGEMBANG ================= -->
+        <section id="page-profil" class="page-section hidden max-w-2xl mx-auto space-y-6">
+            <div class="text-center">
+                <span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-bold text-xs uppercase tracking-wider rounded-full">Kreator MPI</span>
+                <h2 class="text-3xl font-black text-slate-800 mt-2">Profil Pengembang</h2>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-3xl shadow-xl border border-slate-100 flex flex-col items-center text-center space-y-6">
+                <!-- Avatar placeholder -->
+                <div class="w-28 h-28 bg-gradient-to-tr from-emerald-600 to-amber-400 rounded-full flex items-center justify-center text-white text-4xl shadow-lg border-4 border-white">
+                    👨‍🏫
+                </div>
+                
+                <div class="space-y-1">
+                    <h3 class="font-black text-xl text-slate-800">Guru PAI SMP Negeri Terbaik</h3>
+                    <p class="text-xs text-slate-500 uppercase font-bold tracking-widest">Pendidikan Agama Islam - Spesialis Tajwid</p>
+                    <p class="text-emerald-700 font-medium text-sm mt-1">NIP. 19920824 202403 1 002</p>
+                </div>
+
+                <div class="border-t pt-4 w-full">
+                    <p class="text-slate-600 text-sm leading-relaxed max-w-md mx-auto">
+                        "Media Pembelajaran Interaktif ini didevelop untuk menunjang pembelajaran mandiri (Self-regulated learning) kurikulum merdeka materi Tajwid Al-Qur'an pada jenjang Sekolah Menengah Pertama (SMP)."
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 w-full text-left pt-2">
+                    <div class="bg-slate-50 p-3 rounded-xl">
+                        <span class="text-xs text-slate-400 block">E-mail Resmi</span>
+                        <span class="text-xs md:text-sm font-semibold text-slate-700">guru.pai@sekolah.sch.id</span>
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-xl">
+                        <span class="text-xs text-slate-400 block">Rilis Versi</span>
+                        <span class="text-xs md:text-sm font-semibold text-slate-700">v1.1.0 (Stabil 2026)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- App Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-6 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <div>
+                <p class="text-sm font-bold text-slate-200">Media Pembelajaran Interaktif (MPI) Tajwid</p>
+                <p class="text-xs mt-0.5">Materi Hukum Bacaan Nun Sukun & Tanwin - Kelas VII SMP</p>
+            </div>
+            <div>
+                <p class="text-xs">&copy; 2026 Pendidikan Agama Islam Indonesia. Didukung oleh Kurikulum Merdeka.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive App Script -->
+    <script>
+        // State Management variables
+        let currentState = {
+            activePage: 'home',
+            petaSelected: null,
+            materiActiveTab: 'tab-izhar',
+            // Quiz State
+            quizCurrentIndex: 0,
+            quizScore: 0,
+            quizData: [
+                {
+                    q: "Apa hukum bacaan yang terjadi jika Nun Sukun (نْ) bertemu dengan huruf Hamzah/Alif (أ)?",
+                    arabic: "مَنْ اٰمَنَ",
+                    options: ["Idgham Bighunnah", "Izhar Halqi", "Iqlab", "Ikhfa Haqiqi"],
+                    correct: 1,
+                    feedback: "Benar! Nun Sukun bertemu Alif (أ) dibaca jelas tanpa mendengung (Izhar Halqi)."
+                },
+                {
+                    q: "Mengapa kalimat di bawah ini dikategorikan sebagai hukum bacaan Idgham Bighunnah?",
+                    arabic: "مَنْ يَّقُوْلُ",
+                    options: [
+                        "Karena Nun Sukun bertemu huruf Ya (ي) dan dibaca mendengung 2-3 harakat",
+                        "Karena Nun Sukun bertemu huruf Ya (ي) dan dibaca jelas",
+                        "Karena Tanwin bertemu huruf Ba (ب)",
+                        "Karena bertemu huruf tenggorokan"
+                    ],
+                    correct: 0,
+                    feedback: "Tepat sekali! Nun sukun bertemu Ya (ي) dibaca melebur disertai dengung (Idgham Bighunnah)."
+                },
+                {
+                    q: "Manakah di bawah ini yang merupakan satu-satunya huruf Iqlab?",
+                    arabic: "مِنْ بَعْدِ",
+                    options: ["Ba (ب)", "Mim (م)", "Lam (ل)", "Alif (أ)"],
+                    correct: 0,
+                    feedback: "Hebat! Huruf Iqlab hanya ada satu yaitu Ba (ب), di mana suara Nun dilebur menjadi Mim."
+                },
+                {
+                    q: "Jika Nun Sukun (نْ) bertemu dengan huruf Lam (ل), bagaimanakah cara membacanya?",
+                    arabic: "مِنْ لَّدُنْهُ",
+                    options: [
+                        "Dibaca jelas dan terang",
+                        "Dibaca samar-samar mendengung",
+                        "Dibaca melebur masuk tanpa mendengung",
+                        "Suaranya diubah menjadi Mim"
+                    ],
+                    correct: 2,
+                    feedback: "Sempurna! Bertemu Lam (ل) adalah Idgham Bilaghunnah (Melebur masuk tanpa dengung)."
+                },
+                {
+                    q: "Ada berapakah jumlah huruf keseluruhan untuk hukum bacaan Ikhfa Haqiqi?",
+                    arabic: "مِنْ دُوْنِ",
+                    options: ["6 huruf", "15 huruf", "2 huruf", "4 huruf"],
+                    correct: 1,
+                    feedback: "Benar! Ada 15 huruf hijaiyah yang dibaca menyamar dengan dengung (Ikhfa Haqiqi)."
+                }
+            ],
+            // Game State
+            selectedGameCardId: null,
+            gameCards: [
+                { id: 1, text: "مَنْ اٰمَنَ", type: "izhar" },
+                { id: 2, text: "مَنْ يَّقُوْلُ", type: "bighunnah" },
+                { id: 3, text: "مِنْ لَّدُنْهُ", type: "bilaghunnah" },
+                { id: 4, text: "مِنْ بَعْدِ", type: "iqlab" },
+                { id: 5, text: "مَنْ دُوْنِ", type: "ikhfa" },
+                { id: 6, text: "عَذَابٌ اَلِيْمٌ", type: "izhar" },
+                { id: 7, text: "فِيْ عَمَدٍ مُّمَدَّدَةٍ", type: "bighunnah" },
+                { id: 8, text: "غَفُوْرًا رَّحِيْمًا", type: "bilaghunnah" },
+                { id: 9, text: "سَمِيْعٌۢ بَصِيْرٌ", type: "iqlab" },
+                { id: 10, text: "مَاءً ثَجَّاجًا", type: "ikhfa" }
+            ],
+            gamePlacedCount: {
+                izhar: 0,
+                bighunnah: 0,
+                bilaghunnah: 0,
+                iqlab: 0,
+                ikhfa: 0
+            },
+            gameScore: 0
+        };
+
+        // Initialize Audio context helper for playful synthetics sound effects
+        let audioCtx = null;
+        function getAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            return audioCtx;
+        }
+
+        function playSound(type) {
+            try {
+                const ctx = getAudioContext();
+                if (ctx.state === 'suspended') {
+                    ctx.resume();
+                }
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'click') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(600, ctx.currentTime);
+                    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.15);
+                } else if (type === 'correct') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1); // E5
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2); // G5
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.4);
+                } else if (type === 'wrong') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(150, ctx.currentTime);
+                    osc.frequency.linearRampToValueAtTime(100, ctx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.3);
+                }
+            } catch (e) {
+                console.log("Audio not supported yet or gesture restriction active.");
+            }
+        }
+
+        // Acoustic guides representing pronunciation styles
+        function playAcousticGuide(style) {
+            try {
+                const ctx = getAudioContext();
+                if (ctx.state === 'suspended') {
+                    ctx.resume();
+                }
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (style === 'staccato') {
+                    // Quick clear note representing Izhar/Bilaghunnah
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(440, ctx.currentTime);
+                    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.3);
+                } else if (style === 'long') {
+                    // Continuous slightly modulated note representing Dengung (Bighunnah/Ikhfa)
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(330, ctx.currentTime);
+                    // Add subtle pitch vibrato to mimic wave/dengung
+                    osc.frequency.linearRampToValueAtTime(340, ctx.currentTime + 0.4);
+                    osc.frequency.linearRampToValueAtTime(320, ctx.currentTime + 0.8);
+                    osc.frequency.linearRampToValueAtTime(330, ctx.currentTime + 1.2);
+                    gain.gain.setValueAtTime(0.01, ctx.currentTime);
+                    gain.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 0.2);
+                    gain.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 1.0);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.5);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 1.5);
+                } else if (style === 'ramp') {
+                    // Transition pitch representation for Iqlab (N to M shift)
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(350, ctx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.8);
+                    gain.gain.setValueAtTime(0.01, ctx.currentTime);
+                    gain.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 0.3);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.2);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 1.2);
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+        // Page Navigation Control
+        function navigate(pageId) {
+            playSound('click');
+            
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Show current page
+            const targetSection = document.getElementById(`page-${pageId}`);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                currentState.activePage = pageId;
+            }
+
+            // Update Active Menu highlight in Desktop Header
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-800', 'text-amber-400');
+            });
+            
+            // Mobile navigation close trigger
+            document.getElementById('mobile-menu').classList.add('hidden');
+
+            // Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Peta Konsep Node Click Control
+        function selectPetaConcept(conceptId) {
+            playSound('click');
+            currentState.petaSelected = conceptId;
+
+            // Remove highlighted borders
+            document.querySelectorAll('.peta-node').forEach(node => {
+                node.classList.remove('border-emerald-600', 'bg-emerald-50');
+            });
+
+            // Add border to selected node
+            const activeNode = document.getElementById(`peta-${conceptId}`);
+            if (activeNode) {
+                activeNode.classList.add('border-emerald-600', 'bg-emerald-50');
+            }
+
+            // Load Info Card details
+            const infoBox = document.getElementById('peta-info-card');
+            let contentHTML = '';
+
+            switch(conceptId) {
+                case 'izhar':
+                    contentHTML = `
+                        <div class="space-y-3 text-left animate-pulse-once">
+                            <h4 class="font-extrabold text-lg text-emerald-800">🔬 Kupas Tuntas Izhar Halqi</h4>
+                            <p class="text-slate-600 text-sm">Apabila Nun Sukun/Tanwin bertemu huruf tenggorokan, suara harus dilafalkan secara terang benderang. Tidak boleh ditahan mendengung.</p>
+                            <div class="p-3 bg-emerald-100/50 rounded-xl">
+                                <span class="font-bold text-xs text-emerald-800 block">Huruf (6):</span>
+                                <span class="text-xl font-bold arabic text-emerald-900">أ , هـ , ع , ح , غ , خ</span>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'idgham':
+                    contentHTML = `
+                        <div class="space-y-3 text-left">
+                            <h4 class="font-extrabold text-lg text-emerald-800">🔬 Kupas Tuntas Idgham</h4>
+                            <p class="text-slate-600 text-sm">Hukum meleburkan suara Nun ke huruf berikutnya. Terbagi 2:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+                                <div class="p-3 bg-amber-50 rounded-xl border border-amber-100">
+                                    <span class="font-bold text-xs text-amber-800 block">Bighunnah (Mendengung):</span>
+                                    <span class="text-lg font-bold arabic text-amber-900">ي , ن , م , و</span>
+                                </div>
+                                <div class="p-3 bg-red-50 rounded-xl border border-red-100">
+                                    <span class="font-bold text-xs text-red-800 block">Bilaghunnah (Tanpa Dengung):</span>
+                                    <span class="text-lg font-bold arabic text-red-900">ل , ر</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'iqlab':
+                    contentHTML = `
+                        <div class="space-y-3 text-left">
+                            <h4 class="font-extrabold text-lg text-emerald-800">🔬 Kupas Tuntas Iqlab</h4>
+                            <p class="text-slate-600 text-sm">Menukar suara Nun atau Tanwin menjadi Mim mati ber-tasydid tipis ketika bertemu dengan satu-satunya huruf Iqlab yaitu Ba.</p>
+                            <div class="p-3 bg-purple-50 rounded-xl border border-purple-100">
+                                <span class="font-bold text-xs text-purple-800 block">Huruf (1):</span>
+                                <span class="text-xl font-bold arabic text-purple-900">ب</span>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                case 'ikhfa':
+                    contentHTML = `
+                        <div class="space-y-3 text-left">
+                            <h4 class="font-extrabold text-lg text-emerald-800">🔬 Kupas Tuntas Ikhfa Haqiqi</h4>
+                            <p class="text-slate-600 text-sm">Menyamarkan suara Nun sukun menjadi bentuk dengungan samar sebelum makhraj huruf berikutnya tercapai.</p>
+                            <div class="p-3 bg-indigo-50 rounded-xl border border-indigo-100">
+                                <span class="font-bold text-xs text-indigo-800 block">15 Huruf Sisa:</span>
+                                <span class="text-sm font-semibold text-slate-700">ت, ث, ج, د, ذ, ز, س, ش, ص, ض, ط, ظ, ف, ق, ك</span>
+                            </div>
+                        </div>
+                    `;
+                    break;
+            }
+
+            infoBox.innerHTML = contentHTML;
+        }
+
+        // Lesson Materi Tab Switcher
+        function setActiveMateriTab(tabId) {
+            playSound('click');
+            currentState.materiActiveTab = tabId;
+
+            // Remove active style from all tab buttons
+            document.querySelectorAll('.materi-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-600', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+            });
+
+            // Add active class to clicked button
+            const activeBtn = document.getElementById(`tab-btn-${tabId.replace('tab-', '')}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slate-700', 'border');
+                activeBtn.classList.add('bg-emerald-600', 'text-white');
+            }
+
+            // Hide all tab contents
+            document.querySelectorAll('.materi-tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Show selected content
+            const activeContent = document.getElementById(tabId);
+            if (activeContent) {
+                activeContent.classList.remove('hidden');
+            }
+        }
+
+        // Quiz System Functions
+        function startQuiz() {
+            playSound('click');
+            currentState.quizCurrentIndex = 0;
+            currentState.quizScore = 0;
+
+            document.getElementById('game-selectors').classList.add('hidden');
+            document.getElementById('quiz-block').classList.remove('hidden');
+            document.getElementById('game-result-modal').classList.add('hidden');
+
+            loadQuizQuestion();
+        }
+
+        function loadQuizQuestion() {
+            const index = currentState.quizCurrentIndex;
+            const data = currentState.quizData[index];
+
+            // Update progress header
+            document.getElementById('quiz-num').innerText = index + 1;
+            document.getElementById('quiz-score-indicator').innerText = currentState.quizScore;
+            
+            const percentage = ((index + 1) / 5) * 100;
+            document.getElementById('quiz-progress').style.width = `${percentage}%`;
+
+            // Set texts
+            document.getElementById('quiz-question-text').innerText = data.q;
+            document.getElementById('quiz-question-arabic').innerText = data.arabic;
+
+            // Render options
+            const optionsContainer = document.getElementById('quiz-options-container');
+            optionsContainer.innerHTML = '';
+
+            data.options.forEach((opt, oIdx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border-2 border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 transition font-medium text-sm md:text-base flex justify-between items-center";
+                btn.innerHTML = `<span>${opt}</span><span class="text-xs text-slate-400">Pilih Option</span>`;
+                btn.onclick = () => checkQuizAnswer(oIdx);
+                optionsContainer.appendChild(btn);
+            });
+
+            // Hide feedback box
+            const fbBox = document.getElementById('quiz-feedback-box');
+            fbBox.classList.add('hidden');
+        }
+
+        function checkQuizAnswer(selectedIdx) {
+            const index = currentState.quizCurrentIndex;
+            const data = currentState.quizData[index];
+            const optionsContainer = document.getElementById('quiz-options-container');
+
+            // Disable all option buttons
+            Array.from(optionsContainer.children).forEach((btn, bIdx) => {
+                btn.disabled = true;
+                if (bIdx === data.correct) {
+                    btn.classList.remove('border-slate-200', 'hover:border-emerald-500');
+                    btn.classList.add('border-emerald-500', 'bg-emerald-100', 'text-emerald-900');
+                } else if (bIdx === selectedIdx) {
+                    btn.classList.remove('border-slate-200');
+                    btn.classList.add('border-red-500', 'bg-red-50', 'text-red-900');
+                }
+            });
+
+            const fbBox = document.getElementById('quiz-feedback-box');
+            fbBox.classList.remove('hidden');
+
+            if (selectedIdx === data.correct) {
+                playSound('correct');
+                currentState.quizScore += 20;
+                document.getElementById('quiz-score-indicator').innerText = currentState.quizScore;
+                fbBox.innerHTML = `<span class="text-emerald-600">🎉 ${data.feedback}</span>`;
+            } else {
+                playSound('wrong');
+                fbBox.innerHTML = `<span class="text-red-600">❌ Sayang sekali. ${data.feedback}</span>`;
+            }
+
+            // Move to next question or end
+            setTimeout(() => {
+                currentState.quizCurrentIndex++;
+                if (currentState.quizCurrentIndex < currentState.quizData.length) {
+                    loadQuizQuestion();
+                } else {
+                    showQuizFinalResults();
+                }
+            }, 3000);
+        }
+
+        function showQuizFinalResults() {
+            document.getElementById('quiz-block').classList.add('hidden');
+            const modal = document.getElementById('game-result-modal');
+            modal.classList.remove('hidden');
+
+            document.getElementById('result-title').innerText = "Kuis Selesai! 🎉";
+            document.getElementById('result-message').innerText = `Hebat sekali! Kamu telah menyelesaikan petualangan kuis Detektif Tajwid Kelas 7 SMP.`;
+            document.getElementById('result-score-val').innerText = `${currentState.quizScore} / 100`;
+        }
+
+        function quitQuiz() {
+            playSound('click');
+            document.getElementById('quiz-block').classList.add('hidden');
+            document.getElementById('game-selectors').classList.remove('hidden');
+        }
+
+        // Sorting Game Functions
+        function startSortingGame() {
+            playSound('click');
+            
+            // Reset state game
+            currentState.gameScore = 0;
+            currentState.selectedGameCardId = null;
+            currentState.gamePlacedCount = {
+                izhar: 0,
+                bighunnah: 0,
+                bilaghunnah: 0,
+                iqlab: 0,
+                ikhfa: 0
+            };
+
+            document.getElementById('game-selectors').classList.add('hidden');
+            document.getElementById('sort-block').classList.remove('hidden');
+            document.getElementById('game-result-modal').classList.add('hidden');
+
+            // Reset basket text indicators
+            updateBasketCountUI();
+            renderSortingCards();
+        }
+
+        function updateBasketCountUI() {
+            document.getElementById('count-izhar').innerText = `(${currentState.gamePlacedCount.izhar} terisi)`;
+            document.getElementById('count-bighunnah').innerText = `(${currentState.gamePlacedCount.bighunnah} terisi)`;
+            document.getElementById('count-bilaghunnah').innerText = `(${currentState.gamePlacedCount.bilaghunnah} terisi)`;
+            document.getElementById('count-iqlab').innerText = `(${currentState.gamePlacedCount.iqlab} terisi)`;
+            document.getElementById('count-ikhfa').innerText = `(${currentState.gamePlacedCount.ikhfa} terisi)`;
+        }
+
+        function renderSortingCards() {
+            const deck = document.getElementById('sort-deck');
+            deck.innerHTML = '';
+
+            // Filter out already sorted cards (none initially, but we can track active ones)
+            currentState.gameCards.forEach(card => {
+                // If it's already sorted, don't show it
+                const cardEl = document.createElement('button');
+                cardEl.id = `sort-card-${card.id}`;
+                cardEl.className = "p-4 bg-white border-2 border-dashed border-slate-300 hover:border-emerald-600 rounded-2xl shadow-sm text-center transition hover:-translate-y-0.5 active:translate-y-0 duration-200 cursor-pointer min-w-[120px]";
+                cardEl.innerHTML = `
+                    <span class="text-xl md:text-2xl font-bold arabic text-slate-800 block">${card.text}</span>
+                    <span class="text-[10px] text-slate-400 mt-1 block">Pilih Kartu</span>
+                `;
+                cardEl.onclick = () => selectGameCard(card.id);
+                deck.appendChild(cardEl);
+            });
+        }
+
+        function selectGameCard(cardId) {
+            playSound('click');
+            currentState.selectedGameCardId = cardId;
+
+            // Highlight chosen card, clear others
+            document.querySelectorAll('#sort-deck button').forEach(btn => {
+                btn.classList.remove('border-amber-500', 'bg-amber-50/50');
+                btn.classList.add('border-slate-300', 'bg-white');
+            });
+
+            const activeCard = document.getElementById(`sort-card-${cardId}`);
+            if (activeCard) {
+                activeCard.classList.remove('border-slate-300', 'bg-white');
+                activeCard.classList.add('border-amber-500', 'bg-amber-50/50');
+            }
+        }
+
+        function selectBasket(basketType) {
+            if (!currentState.selectedGameCardId) {
+                // Show notification to select a card first
+                showGameFeedbackToast("Oops! Pilih salah satu kartu ayat di atas terlebih dahulu!", "wrong");
+                return;
+            }
+
+            const card = currentState.gameCards.find(c => c.id === currentState.selectedGameCardId);
+            
+            if (card.type === basketType) {
+                // CORRECT match!
+                playSound('correct');
+                currentState.gamePlacedCount[basketType]++;
+                currentState.gameScore += 10;
+                
+                showGameFeedbackToast(`Tepat Sekali! "${card.text}" dimasukkan ke Keranjang yang benar. (+10 Poin)`, "correct");
+
+                // Remove card from array temporarily or hide it
+                currentState.gameCards = currentState.gameCards.filter(c => c.id !== card.id);
+                
+                updateBasketCountUI();
+                renderSortingCards();
+                currentState.selectedGameCardId = null;
+
+                // Check if game complete
+                if (currentState.gameCards.length === 0) {
+                    setTimeout(() => {
+                        showSortingGameFinalResults();
+                    }, 1500);
+                }
+            } else {
+                // WRONG match!
+                playSound('wrong');
+                showGameFeedbackToast("Sifat/Hukum bacaan kurang cocok! Cobalah letakkan di keranjang lainnya.", "wrong");
+            }
+        }
+
+        function showGameFeedbackToast(message, status) {
+            const toast = document.getElementById('game-feedback-toast');
+            toast.innerText = message;
+            toast.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-red-100', 'text-red-800');
+
+            if (status === 'correct') {
+                toast.classList.add('bg-emerald-100', 'text-emerald-800');
+            } else {
+                toast.classList.add('bg-red-100', 'text-red-800');
+            }
+
+            // Fade out after 2.5 seconds
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2500);
+        }
+
+        function showSortingGameFinalResults() {
+            document.getElementById('sort-block').classList.add('hidden');
+            const modal = document.getElementById('game-result-modal');
+            modal.classList.remove('hidden');
+
+            document.getElementById('result-title').innerText = "Keranjang Penuh! 🏆";
+            document.getElementById('result-message').innerText = `Luar biasa! Kamu berhasil mengelompokkan semua ayat hukum Nun Sukun dan Tanwin dengan sempurna.`;
+            document.getElementById('result-score-val').innerText = `${currentState.gameScore} / 100`;
+        }
+
+        function quitSortingGame() {
+            playSound('click');
+            // Reset default game cards list when quitting early
+            currentState.gameCards = [
+                { id: 1, text: "مَنْ اٰمَنَ", type: "izhar" },
+                { id: 2, text: "مَنْ يَّقُوْلُ", type: "bighunnah" },
+                { id: 3, text: "مِنْ لَّدُنْهُ", type: "bilaghunnah" },
+                { id: 4, text: "مِنْ بَعْدِ", type: "iqlab" },
+                { id: 5, text: "مَنْ دُوْنِ", type: "ikhfa" },
+                { id: 6, text: "عَذَابٌ اَلِيْمٌ", type: "izhar" },
+                { id: 7, text: "فِيْ عَمَدٍ مُّمَدَّدَةٍ", type: "bighunnah" },
+                { id: 8, text: "غَفُوْرًا رَّحِيْمًا", type: "bilaghunnah" },
+                { id: 9, text: "سَمِيْعٌۢ بَصِيْرٌ", type: "iqlab" },
+                { id: 10, text: "مَاءً ثَجَّاجًا", type: "ikhfa" }
+            ];
+            document.getElementById('sort-block').classList.add('hidden');
+            document.getElementById('game-selectors').classList.remove('hidden');
+        }
+
+        function resetToGamesSelection() {
+            // Restore cards for safety
+            currentState.gameCards = [
+                { id: 1, text: "مَنْ اٰمَنَ", type: "izhar" },
+                { id: 2, text: "مَنْ يَّقُوْلُ", type: "bighunnah" },
+                { id: 3, text: "مِنْ لَّدُنْهُ", type: "bilaghunnah" },
+                { id: 4, text: "مِنْ بَعْدِ", type: "iqlab" },
+                { id: 5, text: "مَنْ دُوْنِ", type: "ikhfa" },
+                { id: 6, text: "عَذَابٌ اَلِيْمٌ", type: "izhar" },
+                { id: 7, text: "فِيْ عَمَدٍ مُّمَدَّدَةٍ", type: "bighunnah" },
+                { id: 8, text: "غَفُوْرًا رَّحِيْمًا", type: "bilaghunnah" },
+                { id: 9, text: "سَمِيْعٌۢ بَصِيْرٌ", type: "iqlab" },
+                { id: 10, text: "مَاءً ثَجَّاجًا", type: "ikhfa" }
+            ];
+            playSound('click');
+            document.getElementById('game-result-modal').classList.add('hidden');
+            document.getElementById('game-selectors').classList.remove('hidden');
+        }
+
+        // Window load starter
+        window.onload = function() {
+            // Initial view states load
+            navigate('home');
+            selectPetaConcept('izhar');
+            setActiveMateriTab('tab-izhar');
+
+            // Set mobile burger trigger
+            const burger = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            burger.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        };
+    </script>
+</body>
+</html>
